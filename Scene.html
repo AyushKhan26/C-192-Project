@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <Title>VR Hot Air Ballon</Title>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <script src="./js/movement.js"></script>
+ </head>
+ <a-scene inspector-plugin-recast>
+
+     <!--Environment-->
+     <a-entity environment="preset: forest;light: directional"></a-entity>
+
+    <a-assets>
+        <a-asset-item id="hot_air_ballon" src="./assets/hot_air_balloon_free/scene.gltf"></a-asset-item>
+        <a-asset-item id="lord" src="./assets/shri_ganesha/scene.gltf"></a-asset-item>
+        <a-asset-item id="shiva" src="./assets/shiva.glb"></a-asset-item>
+        <a-asset-item id="navmesh" src="./navmesh.glb"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="nav-mesh" gltf-model="#navmesh" nav-mesh></a-entity>
+
+    <a-camera id="camera" wasd-controls look-controls="enabled: true" position="0 18 -2">
+      <a-entity id="ballon" position="0 25 -10" gltf-model="#hot_air_ballon" scale="5 5 5" rotation="0 90 0" movement></a-entity>
+    </a-camera>
+
+    <a-entity id="god" position="-20 0 -100" gltf-model="#lord" scale='0.7 0.7 0.7'></a-entity>
+    <a-entity id="shiva" position="-80 4 -70" gltf-model="#shiva" scale='2 2 2'></a-entity>
+   
+    <a-entity text="value: Pilgrimage Simulation;fontSize: 25;fontType: dejavu;"  position="0 20 -4"></a-entity>
+
+ </a-scene>
+</html>
